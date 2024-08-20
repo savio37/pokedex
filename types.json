@@ -1,0 +1,1534 @@
+[
+    {
+        "id": 1,
+        "title": "Normal",
+        "img": "img/type/1.png",
+        "defending": {
+            "immune": [
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "title": "Fighting",
+        "img": "img/type/2.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 1,
+                    "title": "Normal",
+                    "img": "img/type/1.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "title": "Flying",
+        "img": "img/type/3.png",
+        "defending": {
+            "immune": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 4,
+        "title": "Poison",
+        "img": "img/type/4.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "title": "Ground",
+        "img": "img/type/5.png",
+        "defending": {
+            "immune": [
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "title": "Rock",
+        "img": "img/type/6.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 1,
+                    "title": "Normal",
+                    "img": "img/type/1.png"
+                },
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "title": "Bug",
+        "img": "img/type/7.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "title": "Ghost",
+        "img": "img/type/8.png",
+        "defending": {
+            "immune": [
+                {
+                    "id": 1,
+                    "title": "Normal",
+                    "img": "img/type/1.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 1,
+                    "title": "Normal",
+                    "img": "img/type/1.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "title": "Steel",
+        "img": "img/type/9.png",
+        "defending": {
+            "immune": [
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 1,
+                    "title": "Normal",
+                    "img": "img/type/1.png"
+                },
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "title": "Fire",
+        "img": "img/type/10.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "title": "Water",
+        "img": "img/type/11.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "title": "Grass",
+        "img": "img/type/12.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "title": "Electric",
+        "img": "img/type/13.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 14,
+        "title": "Psychic",
+        "img": "img/type/14.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 15,
+        "title": "Ice",
+        "img": "img/type/15.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 6,
+                    "title": "Rock",
+                    "img": "img/type/6.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 3,
+                    "title": "Flying",
+                    "img": "img/type/3.png"
+                },
+                {
+                    "id": 5,
+                    "title": "Ground",
+                    "img": "img/type/5.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 16,
+        "title": "Dragon",
+        "img": "img/type/16.png",
+        "defending": {
+            "resistant": [
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                },
+                {
+                    "id": 11,
+                    "title": "Water",
+                    "img": "img/type/11.png"
+                },
+                {
+                    "id": 12,
+                    "title": "Grass",
+                    "img": "img/type/12.png"
+                },
+                {
+                    "id": 13,
+                    "title": "Electric",
+                    "img": "img/type/13.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 15,
+                    "title": "Ice",
+                    "img": "img/type/15.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ]
+        },
+        "attacking": {
+            "immune": [
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 17,
+        "title": "Dark",
+        "img": "img/type/17.png",
+        "defending": {
+            "immune": [
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                },
+                {
+                    "id": 18,
+                    "title": "Fairy",
+                    "img": "img/type/18.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 8,
+                    "title": "Ghost",
+                    "img": "img/type/8.png"
+                },
+                {
+                    "id": 14,
+                    "title": "Psychic",
+                    "img": "img/type/14.png"
+                }
+            ]
+        }
+    },
+    {
+        "id": 18,
+        "title": "Fairy",
+        "img": "img/type/18.png",
+        "defending": {
+            "immune": [
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                }
+            ],
+            "resistant": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 7,
+                    "title": "Bug",
+                    "img": "img/type/7.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                }
+            ]
+        },
+        "attacking": {
+            "resistant": [
+                {
+                    "id": 4,
+                    "title": "Poison",
+                    "img": "img/type/4.png"
+                },
+                {
+                    "id": 9,
+                    "title": "Steel",
+                    "img": "img/type/9.png"
+                },
+                {
+                    "id": 10,
+                    "title": "Fire",
+                    "img": "img/type/10.png"
+                }
+            ],
+            "vulnerable": [
+                {
+                    "id": 2,
+                    "title": "Fighting",
+                    "img": "img/type/2.png"
+                },
+                {
+                    "id": 16,
+                    "title": "Dragon",
+                    "img": "img/type/16.png"
+                },
+                {
+                    "id": 17,
+                    "title": "Dark",
+                    "img": "img/type/17.png"
+                }
+            ]
+        }
+    }
+]
