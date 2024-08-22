@@ -120,5 +120,5 @@ async def get_types():
 # print("<<< TIPOS >>>") 
 # asyncio.run(get_types())
 
-print("<<< POKÉMON >>>") 
-asyncio.run(get_species(range(1, 152)))
+# print("<<< POKÉMON >>>") 
+# asyncio.run(get_species(range(1, 152)))
