@@ -28,8 +28,8 @@ async def get_species(ids:list[int]):
             type_dict = {'id': t.type.id, 'title':t.type.name.title(), 'img': f'img/type/{t.type.id}.png'}
             pokemon_dict['types'].append(type_dict)
             
-        pokemon_dict['height'] = f'{pokemon.height / 10:.1f} m'
-        pokemon_dict['weight'] = f'{pokemon.weight / 10:.1f} Kg'
+        pokemon_dict['height'] = round(pokemon.height / 10, 1)
+        pokemon_dict['weight'] = round(pokemon.weight / 10, 1)
         
         pokemon_dict['stats'] = {}
         pokemon_dict['stats']['hp'] = pokemon.stats[0].base_stat
