@@ -2,23 +2,23 @@ import aiopoke
 import asyncio
 import json
 import os
+from database import FacadeDB
         
         
-async def get_pokemons(ids:list[int]):
-    
+async def get_species(ids:list[int]):
     client = aiopoke.AiopokeClient()
-    
-    pokemons = []
+    db = FacadeDB()
+    db.clear_species()
     
     for id in ids:
         pokemon = await client.get_pokemon(id)
         pokemon_dict = {}
         
-        sprite = pokemon.sprites.front_default
-        await sprite.save(client=client, path=f'./img/pokemon')
+        # sprite = pokemon.sprites.front_default
+        # await sprite.save(client=client, path=f'./img/pokemon')
         
         pokemon_dict['id'] = pokemon.id
-        pokemon_dict['species'] = pokemon.name.title()
+        pokemon_dict['name'] = pokemon.name.title()
         pokemon_dict['img'] = f'img/pokemon/pokemon_{pokemon.id}.png'
         print(f'{pokemon.id} - {pokemon.name.title()}')
         
@@ -45,25 +45,21 @@ async def get_pokemons(ids:list[int]):
         if len(link.evolves_to) > 0:
             pokemon_dict['evo_chain'] = []
             if link.species.id <= 151 and link.species.id != pokemon.id:
-                pokemon_dict['evo_chain'].append({'id': link.species.id, 'species': link.species.name.title(), 'img': f'img/pokemon_{link.species.id}.png'})
+                pokemon_dict['evo_chain'].append({'id': link.species.id, 'name': link.species.name.title(), 'img': f'img/pokemon_{link.species.id}.png'})
             while True:
                 link = link.evolves_to[0]
                 if link.species.id <= 151 and link.species.id != pokemon.id:
-                    pokemon_dict['evo_chain'].append({'id': link.species.id, 'species': link.species.name.title(), 'img': f'img/pokemon_{link.species.id}.png'})
+                    pokemon_dict['evo_chain'].append({'id': link.species.id, 'name': link.species.name.title(), 'img': f'img/pokemon_{link.species.id}.png'})
                 if len(link.evolves_to) == 0:
                     break
         
-        pokemons.append(pokemon_dict)
-        
-    with open("pokemon.json", "w") as file:
-        json.dump(pokemons, file, indent=4, ensure_ascii=False)
+        db.add_species(pokemon_dict)
 
 
 async def get_types():
-        
     client = aiopoke.AiopokeClient()
-    
-    types = []
+    db = FacadeDB()
+    db.clear_types()
     
     for i in range(1, 19):
         type = await client.get_type(i)
@@ -108,21 +104,11 @@ async def get_types():
         for t in vulnerable:
             type_dict['attacking']['vulnerable'].append({'id': t.id, 'title':t.name.title(), 'img': f'img/type/{t.id}.png'})
             
-        types.append(type_dict)
-        
-    with open("types.json", "w") as file:
-        json.dump(types, file, indent=4, ensure_ascii=False)
+        db.add_type(type_dict)
 
-
-for file in os.listdir('img'):
-            path = os.path.join('img', file)
-            if os.path.isfile(path):
-                os.remove(path)
-
-# rodar só uma função por vez!
-
-print("<<< POKÉMON >>>") 
-asyncio.run(get_pokemons(range(1, 152)))
 
 # print("<<< TIPOS >>>") 
 # asyncio.run(get_types())
+
+# print("<<< POKÉMON >>>") 
+# asyncio.run(get_species(range(1, 152)))
