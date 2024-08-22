@@ -12,6 +12,7 @@ async def get_species(ids:list[int]):
     
     for id in ids:
         pokemon = await client.get_pokemon(id)
+        species = await client.get_pokemon_species(id)
         pokemon_dict = {}
         
         # sprite = pokemon.sprites.front_default
@@ -20,7 +21,6 @@ async def get_species(ids:list[int]):
         pokemon_dict['id'] = pokemon.id
         pokemon_dict['name'] = pokemon.name.title()
         pokemon_dict['img'] = f'img/pokemon/pokemon_{pokemon.id}.png'
-        print(f'{pokemon.id} - {pokemon.name.title()}')
         
         pokemon_dict['types'] = []
         for t in pokemon.types:
@@ -38,8 +38,17 @@ async def get_species(ids:list[int]):
         pokemon_dict['stats']['spdef'] = pokemon.stats[4].base_stat
         pokemon_dict['stats']['spd'] = pokemon.stats[5].base_stat
         
+        desc = ""
+        for entry in species.flavor_text_entries:
+            if entry.language.name == 'en':
+                desc = entry.flavor_text
+                break
+        pokemon_dict['description'] = desc.replace('\f', ' ') \
+                                          .replace('\n', ' ') \
+                                          .replace('\u00e9', 'é') \
+                                          .replace('POKéMON', 'pokémon')
+                                   
         
-        species = await client.get_pokemon_species(pokemon.id)
         chain = await species.evolution_chain.fetch()
         link = chain.chain
         if len(link.evolves_to) > 0:
@@ -52,7 +61,8 @@ async def get_species(ids:list[int]):
                     pokemon_dict['evo_chain'].append({'id': link.species.id, 'name': link.species.name.title(), 'img': f'img/pokemon_{link.species.id}.png'})
                 if len(link.evolves_to) == 0:
                     break
-        
+    
+        print(f'{pokemon_dict["id"]} - {pokemon_dict["name"]} - {pokemon_dict["description"]}')
         db.add_species(pokemon_dict)
 
 
@@ -110,5 +120,5 @@ async def get_types():
 # print("<<< TIPOS >>>") 
 # asyncio.run(get_types())
 
-# print("<<< POKÉMON >>>") 
-# asyncio.run(get_species(range(1, 152)))
+print("<<< POKÉMON >>>") 
+asyncio.run(get_species(range(1, 152)))
