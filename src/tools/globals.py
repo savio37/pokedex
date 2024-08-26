@@ -109,4 +109,10 @@ class DefaultStyle:
             background-color: transparent;
         }}
         
+        QProgressBar {{
+            text-align: center;
+            font-weight: bold;
+            font-size: {DefaultFont.SIZE+4}pt;
+        }}
+        
         """

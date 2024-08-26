@@ -88,7 +88,7 @@ class AppFormEntry(QFrame):
         super().__init__(parent)
         self.layout_frame = QGridLayout()
         self.layout_frame.setContentsMargins(15, 15, 15, 15)
-        self.layout_frame.setSpacing(0)
+        self.layout_frame.setSpacing(10)
         self.setLayout(self.layout_frame)
     
         self.pokemon = None
@@ -111,15 +111,13 @@ class AppFormEntry(QFrame):
         self.img_tipo_2 = AppImage()
         self.img_tipo_2.setFixedSize(152, 36)
         
-        label = QLabel("Height")
-        label.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt;""")
+        label = AppDexLabel("Height")
         self.label_height = QLabel()
         self.label_height.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
         self.layout_frame.addWidget(label, 2, 2, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom)
         self.layout_frame.addWidget(self.label_height, 3, 2, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
         
-        label = QLabel("Weight")
-        label.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt;""")
+        label = AppDexLabel("Weight")
         self.label_weight = QLabel()
         self.label_weight.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
         self.layout_frame.addWidget(label, 2, 3, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom)
@@ -131,6 +129,42 @@ class AppFormEntry(QFrame):
         self.label_desc.setWordWrap(True)
         self.label_desc.setAlignment(Qt.AlignmentFlag.AlignJustify)
         self.layout_frame.addWidget(self.label_desc, 4, 2, 1, 2, Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+        
+        label = AppDexLabel("HP")
+        self.bar_hp = AppStatBar()
+        self.bar_hp.setStyleSheet(f"""QProgressBar::chunk {{background-color: #9EE865;}}""")
+        self.layout_frame.addWidget(label, 5, 0, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignBottom)
+        self.layout_frame.addWidget(self.bar_hp, 5, 1, 1, 3)
+        
+        label = AppDexLabel("Atk")
+        self.bar_atk = AppStatBar()
+        self.bar_atk.setStyleSheet(f"""QProgressBar::chunk {{background-color: #F5DE69;}}""")
+        self.layout_frame.addWidget(label, 6, 0, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignBottom)
+        self.layout_frame.addWidget(self.bar_atk, 6, 1, 1, 3)
+        
+        label = AppDexLabel("Def")
+        self.bar_def = AppStatBar()
+        self.bar_def.setStyleSheet(f"""QProgressBar::chunk {{background-color: #F09A65;}}""")
+        self.layout_frame.addWidget(label, 7, 0, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignBottom)
+        self.layout_frame.addWidget(self.bar_def, 7, 1, 1, 3)
+        
+        label = AppDexLabel("SpAtk")
+        self.bar_spatk = AppStatBar()
+        self.bar_spatk.setStyleSheet(f"""QProgressBar::chunk {{background-color: #66D8F6;}}""")
+        self.layout_frame.addWidget(label, 8, 0, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignBottom)
+        self.layout_frame.addWidget(self.bar_spatk, 8, 1, 1, 3)
+        
+        label = AppDexLabel("SpDef")
+        self.bar_spdef = AppStatBar()
+        self.bar_spdef.setStyleSheet(f"""QProgressBar::chunk {{background-color: #899EEA;}}""")
+        self.layout_frame.addWidget(label, 9, 0, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignBottom)
+        self.layout_frame.addWidget(self.bar_spdef, 9, 1, 1, 3)
+        
+        label = AppDexLabel("Spd")
+        self.bar_spd = AppStatBar()
+        self.bar_spd.setStyleSheet(f"""QProgressBar::chunk {{background-color: #E46CCA;}}""")
+        self.layout_frame.addWidget(label, 10, 0, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignBottom)
+        self.layout_frame.addWidget(self.bar_spd, 10, 1, 1, 3)
         
         
     def set_species(self, species: dict):
@@ -150,3 +184,22 @@ class AppFormEntry(QFrame):
         self.label_weight.setText(f"{species['weight']} kg")
         self.label_desc.setText(species['description'])
         
+        self.bar_hp.setValue(species['stats']['hp'])
+        self.bar_atk.setValue(species['stats']['atk'])
+        self.bar_def.setValue(species['stats']['def'])
+        self.bar_spatk.setValue(species['stats']['spatk'])
+        self.bar_spdef.setValue(species['stats']['spdef'])
+        self.bar_spd.setValue(species['stats']['spd'])
+
+
+class AppDexLabel(QLabel):
+    def __init__(self, text:str | None = None):
+        super().__init__(text)
+        self.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt;""")        
+    
+    
+class AppStatBar(QProgressBar):
+    def __init__(self):
+        super().__init__()
+        self.setFormat("%v")
+        self.setMaximum(255)
