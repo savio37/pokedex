@@ -1,5 +1,6 @@
 from PyQt6.QtGui import QMouseEvent
 from src.tools.ui_bricks import *
+from src.dex_entry import *
 
 class AppFormDex(QFrame):
     def __init__(self, parent: QWidget):
@@ -93,9 +94,6 @@ class AppFrameFilters(QFrame):
         type_2 = self.txt_type_2.currentText()
         species = db.get_species(id, name, type_1, type_2)
         
-        print(f"Filters: {id} - {name} - {type_1} - {type_2}")
-        print([s['name'] for s in species])
-        
         frame_species:AppFrameSpecies = self.parent().frame_species
         frame_species.load_species(species)
 
@@ -125,6 +123,7 @@ class AppCardSpecies(AppCard):
     def __init__(self, parent: QWidget):
         super().__init__(parent)
         self.pokemon = None
+        self.popup = AppWindowEntry()
         
         self.label_num = QLabel()
         self.layout_frame.addWidget(self.label_num, 0, 0, 1, 1, Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
@@ -144,7 +143,7 @@ class AppCardSpecies(AppCard):
         
     def mousePressEvent(self, a0: QMouseEvent | None):
         super().mousePressEvent(a0)
-        print(f"{self.pokemon['name']} clicked")
+        self.popup.show()
         
     def set_species(self, species: dict):
         self.pokemon = species
@@ -160,6 +159,7 @@ class AppCardSpecies(AppCard):
         else:
             self.layout_frame.addWidget(self.img_tipo_1, 2, 0, 1, 2, Qt.AlignmentFlag.AlignBottom | Qt.AlignmentFlag.AlignCenter)
         
+        self.popup.form.set_species(species)
         self.update()
         self.parent().update()
         

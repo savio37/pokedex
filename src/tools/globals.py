@@ -62,7 +62,7 @@ class DefaultStyle:
             border-bottom-left-radius: 5px;
         }}
         
-        AppFormDex, AppFormDex QFrame, AppFormPC, AppFormPC QFrame, AppFormTypes, AppFormTypes QFrame {{
+        AppFormDex, AppFormDex QFrame, AppFormPC, AppFormPC QFrame, AppFormTypes, AppFormTypes QFrame, AppFormEntry, AppFormEntry QFrame {{
             background-color: {DefaultColor.BG_NORMAL};
             color: {DefaultColor.TEXT};
         }}

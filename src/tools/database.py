@@ -20,7 +20,6 @@ class FacadeDB:
         self.table_species.insert(species)
         
     def get_species(self, id:int=None, name:str='', type1:str='Any', type2:str='Any'):
-        
         return self.table_species.search(
             (self.entry.id == id if id is not None else (self.entry.id.exists())) &
             (self.entry.name.matches(f'{name}[aZ]*', re.RegexFlag.IGNORECASE) if name != '' else self.entry.id.exists()) &
