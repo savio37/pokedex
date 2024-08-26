@@ -22,18 +22,18 @@ class AppWindowEntry(QWidget):
         self.layout_window.addLayout(self.layout_content)
         
         border = QFrame()
-        border.setFixedWidth(10)
+        border.setFixedWidth(5)
         self.layout_content.addWidget(border)
         
         self.form = AppFormEntry(self)
         self.layout_content.addWidget(self.form)
         
         border = QFrame()
-        border.setFixedWidth(10)
+        border.setFixedWidth(5)
         self.layout_content.addWidget(border)
         
         border = QFrame()
-        border.setFixedHeight(10)
+        border.setFixedHeight(5)
         self.layout_window.addWidget(border)
         
         
