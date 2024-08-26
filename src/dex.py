@@ -69,6 +69,7 @@ class AppFrameFilters(QFrame):
         
         self.check_evo = QCheckBox()
         self.check_evo.setText("Show Family")
+        self.check_evo.setChecked(False)
         self.check_evo.hide()
         self.layout_frame.addWidget(self.check_evo)
         
