@@ -27,13 +27,15 @@ class FacadeDB:
             (self.entry.types.any(lambda t: t['title'] == type2) if type2 != 'Any' else self.entry.id.exists()))
         
         families = []
-        if family:
+        if family == True:
             for species in result:
-                family = self.table_species.search(self.entry.id.one_of([evo['id'] for evo in species['evo_chain']]))
-                families.extend(family)
+                if 'evo_chain' in species:
+                    family = self.table_species.search(self.entry.id.one_of([evo['id'] for evo in species['evo_chain']]))
+                    families.extend(family)
         
         result.extend(families)
         result = {s['id']: s for s in result}.values()
+        result = sorted(result, key=lambda s: s['id'])
         
         return result
         

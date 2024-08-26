@@ -69,6 +69,7 @@ class AppFrameFilters(QFrame):
         
         self.check_evo = QCheckBox()
         self.check_evo.setText("Show Family")
+        self.check_evo.hide()
         self.layout_frame.addWidget(self.check_evo)
         
         self.txt_type_1.addItem("Any")
@@ -94,6 +95,12 @@ class AppFrameFilters(QFrame):
         type_1 = self.txt_type_1.currentText()
         type_2 = self.txt_type_2.currentText()
         family = self.check_evo.isChecked()
+        
+        if id != None or name != '' or type_1 != 'Any' or type_2 != 'Any':
+            self.check_evo.show()
+        else:
+            self.check_evo.hide()
+        
         species = db.get_species(id, name, type_1, type_2, family)
         
         frame_species:AppFrameSpecies = self.parent().frame_species
