@@ -100,6 +100,7 @@ class AppFrameFilters(QFrame):
         if id != None or name != '' or type_1 != 'Any' or type_2 != 'Any':
             self.check_evo.show()
         else:
+            self.check_evo.setChecked(False)
             self.check_evo.hide()
         
         species = db.get_species(id, name, type_1, type_2, family)
