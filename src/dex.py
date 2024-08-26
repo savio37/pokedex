@@ -58,18 +58,18 @@ class AppFrameFilters(QFrame):
         self.layout_frame.addWidget(self.txt_name)
         
         label = QLabel()
-        label.setText("Type 1")
+        label.setText("Types")
         self.txt_type_1 = QComboBox()
         self.txt_type_1.setFixedWidth(160)
-        self.layout_frame.addWidget(label)
-        self.layout_frame.addWidget(self.txt_type_1)
-        
-        label = QLabel()
-        label.setText("Type 2")
         self.txt_type_2 = QComboBox()
         self.txt_type_2.setFixedWidth(160)
         self.layout_frame.addWidget(label)
+        self.layout_frame.addWidget(self.txt_type_1)
         self.layout_frame.addWidget(self.txt_type_2)
+        
+        self.check_evo = QCheckBox()
+        self.check_evo.setText("Show Family")
+        self.layout_frame.addWidget(self.check_evo)
         
         self.txt_type_1.addItem("Any")
         self.txt_type_2.addItem("Any")
@@ -85,6 +85,7 @@ class AppFrameFilters(QFrame):
         self.txt_name.textChanged.connect(lambda: self.filter_species())
         self.txt_type_1.currentTextChanged.connect(lambda: self.filter_species())
         self.txt_type_2.currentTextChanged.connect(lambda: self.filter_species())
+        self.check_evo.stateChanged.connect(lambda: self.filter_species())
         
     def filter_species(self):
         id = self.txt_num.text()
@@ -92,7 +93,8 @@ class AppFrameFilters(QFrame):
         name = self.txt_name.text()
         type_1 = self.txt_type_1.currentText()
         type_2 = self.txt_type_2.currentText()
-        species = db.get_species(id, name, type_1, type_2)
+        family = self.check_evo.isChecked()
+        species = db.get_species(id, name, type_1, type_2, family)
         
         frame_species:AppFrameSpecies = self.parent().frame_species
         frame_species.load_species(species)

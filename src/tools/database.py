@@ -19,12 +19,23 @@ class FacadeDB:
     def add_species(self, species:dict):
         self.table_species.insert(species)
         
-    def get_species(self, id:int=None, name:str='', type1:str='Any', type2:str='Any'):
-        return self.table_species.search(
+    def get_species(self, id:int=None, name:str='', type1:str='Any', type2:str='Any', family:bool=False):
+        result = self.table_species.search(
             (self.entry.id == id if id is not None else (self.entry.id.exists())) &
             (self.entry.name.matches(f'{name}[aZ]*', re.RegexFlag.IGNORECASE) if name != '' else self.entry.id.exists()) &
             (self.entry.types.any(lambda t: t['title'] == type1) if type1 != 'Any' else self.entry.id.exists()) &
             (self.entry.types.any(lambda t: t['title'] == type2) if type2 != 'Any' else self.entry.id.exists()))
+        
+        families = []
+        if family:
+            for species in result:
+                family = self.table_species.search(self.entry.id.one_of([evo['id'] for evo in species['evo_chain']]))
+                families.extend(family)
+        
+        result.extend(families)
+        result = {s['id']: s for s in result}.values()
+        
+        return result
         
     
     def del_species(self, id:int):

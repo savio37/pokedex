@@ -9,7 +9,6 @@ class AppWindowRoot(QWidget):
         self.setMinimumSize(1080, 720)
         self.setWindowFlags(Qt.WindowType.Window | Qt.WindowType.FramelessWindowHint)
         self.setStyleSheet(DefaultStyle.APP_WINDOW)
-        self.dialog = None
         
         self.layout_window = QBoxLayout(QBoxLayout.Direction.TopToBottom)
         self.layout_window.setContentsMargins(0, 0, 0, 0)
@@ -75,8 +74,6 @@ class AppTitlebar(QFrame):
         self.window().showMinimized()
         
     def button_close_clicked(self):
-        if self.parent().dialog:
-            self.parent().dialog.close()
         self.window().close()
         
     def mousePressEvent(self, event):
