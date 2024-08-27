@@ -127,7 +127,7 @@ class AppFrameSpecies(QFrame):
         for i, specie in enumerate(species):
             card = AppCardSpecies(self)
             card.set_species(specie)
-            self.layout_frame.addWidget(card, i // 6, i % 6, 1, 1)
+            self.layout_frame.addWidget(card, i // 5, i % 5, 1, 1)
 
         
 class AppCardSpecies(AppCard):
