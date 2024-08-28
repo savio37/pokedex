@@ -70,7 +70,70 @@ class AppFrameFilters(QFrame):
         self.txt_position.currentIndexChanged.connect(self.filter_types)
         
     def filter_types(self):
-        pass
+    
+        frame_immune = self.parent().frame_interactions.frame_immune
+        frame_resistant = self.parent().frame_interactions.frame_resistant
+        frame_vulnerable = self.parent().frame_interactions.frame_vulnerable
+
+        frame_immune.clear()
+        frame_resistant.clear()
+        frame_vulnerable.clear()
+
+        
+        selected_type_1 = self.txt_type_1.currentIndex()
+        selected_type_2 = self.txt_type_2.currentIndex()
+        selected_position = self.txt_position.currentText()
+
+        added_immune = set()
+        added_resistant = set()
+        added_vulnerable = set()
+
+        immune_list = []
+        resistant_list = []
+        vulnerable_list = []
+
+        
+        for selected_type_index in [selected_type_1, selected_type_2]:
+            if selected_type_index != 0:  
+                type_data = db.get_type(selected_type_index)
+
+                
+                if isinstance(type_data, list) and len(type_data) > 0:
+                    type_data = type_data[0]
+                
+                if selected_position == 'Attacking':
+                    type_data_mode = type_data['attacking']
+                else:
+                    type_data_mode = type_data['defending']
+
+
+                if 'immune' in type_data_mode:
+                    immune_list = type_data_mode['immune']
+                    for immune_type in immune_list:
+                        # Crie uma tupla única para rastreamento (pode usar outros identificadores)
+                        unique_id = immune_type['id']
+                        if unique_id not in added_immune:
+                            frame_immune.addType(immune_type)
+                            added_immune.add(unique_id)
+
+                if 'resistant' in type_data_mode:
+                    resistant_list = type_data_mode['resistant']
+                    for resistant_type in resistant_list:
+                        unique_id = resistant_type['id']
+                        if unique_id not in added_resistant:
+                            frame_resistant.addType(resistant_type)
+                            added_resistant.add(unique_id)
+
+                if 'vulnerable' in type_data_mode:
+                    vulnerable_list = type_data_mode['vulnerable']
+                    for vulnerable_type in vulnerable_list:
+                        unique_id = vulnerable_type['id']
+                        if unique_id not in added_vulnerable:
+                            frame_vulnerable.addType(vulnerable_type)
+                            added_vulnerable.add(unique_id)
+                
+
+                
         
 class AppFrameInteractions(QFrame):
     def __init__(self, parent: QWidget):
@@ -116,3 +179,9 @@ class AppFrameTypes(QFrame):
         
     def setLabel(self, text: str):
         self.label.setText(text)
+
+    def clear(self):
+        while self.layout_frame.count() > 1:  
+            child = self.layout_frame.takeAt(1)  
+            if child.widget():
+                child.widget().deleteLater()
