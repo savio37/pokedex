@@ -67,6 +67,7 @@ class AppFrameFilters(QFrame):
         
         self.txt_type_1.currentIndexChanged.connect(self.filter_types)
         self.txt_type_2.currentIndexChanged.connect(self.filter_types)
+        self.txt_position.currentIndexChanged.connect(self.filter_types)
         
     def filter_types(self):
         pass
@@ -98,7 +99,7 @@ class AppFrameTypes(QFrame):
         self.setFixedSize(300, 500)
         
         self.layout_frame = QBoxLayout(QBoxLayout.Direction.TopToBottom)
-        self.layout_frame.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.layout_frame.setAlignment(Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
         self.layout_frame.setContentsMargins(15, 15, 15, 15)
         self.layout_frame.setSpacing(10)
         self.setLayout(self.layout_frame)
