@@ -71,67 +71,49 @@ class AppFrameFilters(QFrame):
         
     def filter_types(self):
     
-        frame_immune = self.parent().frame_interactions.frame_immune
-        frame_resistant = self.parent().frame_interactions.frame_resistant
-        frame_vulnerable = self.parent().frame_interactions.frame_vulnerable
-
+        frame_immune:AppFrameTypes = self.parent().frame_interactions.frame_immune
+        frame_resistant:AppFrameTypes = self.parent().frame_interactions.frame_resistant
+        frame_vulnerable:AppFrameTypes = self.parent().frame_interactions.frame_vulnerable
         frame_immune.clear()
         frame_resistant.clear()
         frame_vulnerable.clear()
 
+        id_type_1 = self.txt_type_1.currentIndex()
+        id_type_2 = self.txt_type_2.currentIndex()
+        position = self.txt_position.currentText()
+
+        list_immune = []
+        list_resistant = []
+        list_vulnerable = []
         
-        selected_type_1 = self.txt_type_1.currentIndex()
-        selected_type_2 = self.txt_type_2.currentIndex()
-        selected_position = self.txt_position.currentText()
+        for id_type in [id_type_1, id_type_2]:
+            if id_type != 0:  
+                type_dict = db.get_type(id_type)[0]
+                interactions = type_dict[position.lower()]
 
-        added_immune = set()
-        added_resistant = set()
-        added_vulnerable = set()
+                if 'immune' in interactions:
+                    for type_dict in interactions['immune']:
+                        if type_dict not in list_immune:
+                            list_immune.append(type_dict)
 
-        immune_list = []
-        resistant_list = []
-        vulnerable_list = []
+                if 'resistant' in interactions:
+                    for type_dict in interactions['resistant']:
+                        if type_dict not in list_resistant:
+                            list_resistant.append(type_dict)
 
+                if 'vulnerable' in interactions:
+                    for type_dict in interactions['vulnerable']:
+                        if type_dict not in list_vulnerable:
+                            list_vulnerable.append(type_dict)
         
-        for selected_type_index in [selected_type_1, selected_type_2]:
-            if selected_type_index != 0:  
-                type_data = db.get_type(selected_type_index)
-
-                
-                if isinstance(type_data, list) and len(type_data) > 0:
-                    type_data = type_data[0]
-                
-                if selected_position == 'Attacking':
-                    type_data_mode = type_data['attacking']
-                else:
-                    type_data_mode = type_data['defending']
-
-
-                if 'immune' in type_data_mode:
-                    immune_list = type_data_mode['immune']
-                    for immune_type in immune_list:
-                        # Crie uma tupla única para rastreamento (pode usar outros identificadores)
-                        unique_id = immune_type['id']
-                        if unique_id not in added_immune:
-                            frame_immune.addType(immune_type)
-                            added_immune.add(unique_id)
-
-                if 'resistant' in type_data_mode:
-                    resistant_list = type_data_mode['resistant']
-                    for resistant_type in resistant_list:
-                        unique_id = resistant_type['id']
-                        if unique_id not in added_resistant:
-                            frame_resistant.addType(resistant_type)
-                            added_resistant.add(unique_id)
-
-                if 'vulnerable' in type_data_mode:
-                    vulnerable_list = type_data_mode['vulnerable']
-                    for vulnerable_type in vulnerable_list:
-                        unique_id = vulnerable_type['id']
-                        if unique_id not in added_vulnerable:
-                            frame_vulnerable.addType(vulnerable_type)
-                            added_vulnerable.add(unique_id)
-                
+        for type_dict in list_immune:
+            frame_immune.addType(type_dict)
+        for type_dict in list_resistant:
+            if type_dict not in list_immune and type_dict not in list_vulnerable:
+                frame_resistant.addType(type_dict)
+        for type_dict in list_vulnerable:
+            if type_dict not in list_immune and type_dict not in list_resistant:
+                frame_vulnerable.addType(type_dict)
 
                 
         
