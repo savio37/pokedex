@@ -1,5 +1,6 @@
 import aiopoke
 import asyncio
+import os
 from database import FacadeDB
         
         
