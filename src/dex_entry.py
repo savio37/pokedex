@@ -93,6 +93,13 @@ class AppFormEntry(QFrame):
     
         self.pokemon = None
         
+        self.button_add = AppButton()
+        self.button_add.setIcon(Icon.PC)
+        self.button_add.setFixedSize(40, 40)
+        self.button_add.setStyleSheet(f"border-radius: 20px; background-color: {DefaultColor.BG_LIGHT};")
+        self.button_add.setClicked(self.add_to_pc)
+        self.layout_frame.addWidget(self.button_add, 0, 3, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
+        
         self.label_num = QLabel()
         self.label_num.setStyleSheet(f"""font-size: {DefaultFont.SIZE+6}pt;""")
         self.layout_frame.addWidget(self.label_num, 0, 0, 1, 1, Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
@@ -190,7 +197,20 @@ class AppFormEntry(QFrame):
         self.bar_spatk.setValue(species['stats']['spatk'])
         self.bar_spdef.setValue(species['stats']['spdef'])
         self.bar_spd.setValue(species['stats']['spd'])
-
+        
+    
+    def add_to_pc(self):
+        if self.pokemon is not None:
+            new_pokemon = {}
+            new_pokemon['name'] = self.pokemon['name']
+            new_pokemon['img'] = self.pokemon['img']
+            new_pokemon['types'] = self.pokemon['types']
+            new_pokemon['height'] = self.pokemon['height']
+            new_pokemon['weight'] = self.pokemon['weight']
+            new_pokemon['stats'] = self.pokemon['stats']
+            new_pokemon['level'] = 1
+            new_pokemon['xp'] = 0
+            db.add_pokemon(new_pokemon)
 
 class AppDexLabel(QLabel):
     def __init__(self, text:str | None = None):

@@ -93,6 +93,13 @@ class AppFormEntry(QFrame):
     
         self.pokemon = None
         
+        self.button_delete = AppButton()
+        self.button_delete.setIcon(Icon.DELETE)
+        self.button_delete.setFixedSize(40, 40)
+        self.button_delete.setStyleSheet(f"border-radius: 20px; background-color: {DefaultColor.BG_LIGHT};")
+        self.button_delete.setClicked(self.button_delete_clicked)
+        self.layout_frame.addWidget(self.button_delete, 0, 3, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
+        
         self.label_nickname = QLabel()
         self.label_nickname.setStyleSheet(f"""font-size: {DefaultFont.SIZE+6}pt;""")
         
@@ -103,11 +110,8 @@ class AppFormEntry(QFrame):
         self.img_pokemon.setFixedSize(256, 256)
         self.layout_frame.addWidget(self.img_pokemon, 1, 0, 4, 2, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
         
-        self.level = 1
-        self.bar_level = AppStatBar()
-        self.bar_level.setMaximum(1000)
-        self.bar_level.setFormat(f"{self.level} (%v XP)")
-        self.bar_level.setStyleSheet(f"""QProgressBar::chunk {{background-color: #91eba3;}}""")
+        self.bar_level = AppXpBar()
+        self.bar_level.setStyleSheet(f"""QProgressBar::chunk {{background-color: #00c954;}}""")
         self.layout_frame.addWidget(self.bar_level, 1, 2, 1, 2)
         
         self.img_type_1 = AppImage()
@@ -188,7 +192,7 @@ class AppFormEntry(QFrame):
         self.label_height.setText(f"{pokemon['height']} m")
         self.label_weight.setText(f"{pokemon['weight']} kg")
         
-        self.level = pokemon['level']
+        self.bar_level.setLevel(pokemon['level'])
         self.bar_level.setValue(pokemon['xp'])
         
         self.bar_hp.setValue(pokemon['stats']['hp'])
@@ -197,6 +201,10 @@ class AppFormEntry(QFrame):
         self.bar_spatk.setValue(pokemon['stats']['spatk'])
         self.bar_spdef.setValue(pokemon['stats']['spdef'])
         self.bar_spd.setValue(pokemon['stats']['spd'])
+        
+    def button_delete_clicked(self):
+        db.del_pokemon(self.pokemon['id'])
+        self.window().close()
 
 
 class AppEntryLabel(QLabel):
@@ -205,8 +213,109 @@ class AppEntryLabel(QLabel):
         self.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt;""")        
     
     
-class AppStatBar(QProgressBar):
+class AppStatBar(QFrame):
     def __init__(self):
         super().__init__()
-        self.setFormat("%v")
-        self.setMaximum(255)
+        self.layout_frame = QBoxLayout(QBoxLayout.Direction.LeftToRight)
+        self.layout_frame.setContentsMargins(0, 0, 0, 0)
+        self.layout_frame.setSpacing(0)
+        self.setLayout(self.layout_frame)
+        
+        self.button_minus = AppButton()
+        self.button_minus.setText("-")
+        self.button_minus.setFixedSize(24, 38)
+        self.button_minus.setStyleSheet("border-top-left-radius: 5px; border-bottom-left-radius: 5px;")
+        self.button_minus.setClicked(self.button_minus_clicked)
+        self.layout_frame.addWidget(self.button_minus)
+        
+        self.bar = QProgressBar()
+        self.bar.setFormat("%v")
+        self.bar.setMaximum(255)
+        self.layout_frame.addWidget(self.bar)
+        
+        self.button_plus = AppButton()
+        self.button_plus.setText("+")
+        self.button_plus.setFixedSize(24, 38)
+        self.button_plus.setStyleSheet("border-top-right-radius: 5px; border-bottom-right-radius: 5px;")
+        self.button_plus.setClicked(self.button_plus_clicked)
+        self.layout_frame.addWidget(self.button_plus)
+        
+    def button_minus_clicked(self):
+        self.setValue(self.value() - 1)
+        
+    def button_plus_clicked(self):
+        self.setValue(self.value() + 1)
+        
+    def value(self):
+        return self.bar.value()
+    
+    def setValue(self, value: int):
+        self.bar.setValue(value)
+        
+        
+class AppXpBar(QFrame):
+    def __init__(self):
+        super().__init__()
+        self.layout_frame = QBoxLayout(QBoxLayout.Direction.LeftToRight)
+        self.layout_frame.setContentsMargins(0, 0, 0, 0)
+        self.layout_frame.setSpacing(0)
+        self.setLayout(self.layout_frame)
+        
+        self.level = 1
+        
+        self.button_down = AppButton()
+        self.button_down.setText("▼")
+        self.button_down.setFixedSize(24, 24)
+        self.button_down.setStyleSheet("border-top-left-radius: 5px; border-bottom-left-radius: 5px;")
+        self.button_down.setClicked(self.button_down_clicked)
+        self.layout_frame.addWidget(self.button_down)
+        
+        self.button_minus = AppButton()
+        self.button_minus.setText("-")
+        self.button_minus.setFixedSize(24, 38)
+        self.button_minus.setStyleSheet("border-top-left-radius: 5px; border-bottom-left-radius: 5px;")
+        self.button_minus.setClicked(self.button_minus_clicked)
+        self.layout_frame.addWidget(self.button_minus)
+        
+        self.bar = QProgressBar()
+        self.bar.setMaximum(100)
+        self.bar.setFormat(f"{self.level} (%v XP)")
+        self.layout_frame.addWidget(self.bar)
+        
+        self.button_plus = AppButton()
+        self.button_plus.setText("+")
+        self.button_plus.setFixedSize(24, 38)
+        self.button_plus.setStyleSheet("border-top-right-radius: 5px; border-bottom-right-radius: 5px;")
+        self.button_plus.setClicked(self.button_plus_clicked)
+        self.layout_frame.addWidget(self.button_plus)
+        
+        self.button_up = AppButton()
+        self.button_up.setText("▲")
+        self.button_up.setFixedSize(24, 24)
+        self.button_up.setStyleSheet("border-top-right-radius: 5px; border-bottom-right-radius: 5px;")
+        self.button_up.setClicked(self.button_up_clicked)
+        self.layout_frame.addWidget(self.button_up)
+        
+    def button_minus_clicked(self):
+        self.setValue(self.value() - 1)
+        
+    def button_plus_clicked(self):
+        self.setValue(self.value() + 1)
+        
+    def button_up_clicked(self):
+        self.setLevel(self.level + 1)
+        self.bar.setFormat(f"{self.level} (%v XP)")
+        
+    def button_down_clicked(self):
+        if self.level > 1:
+            self.setLevel(self.level - 1)
+        self.bar.setFormat(f"{self.level} (%v XP)")
+        
+    def setLevel(self, level: int):
+        self.level = level
+        
+    def value(self):
+        return self.bar.value()
+    
+    def setValue(self, value: int):
+        self.bar.setValue(value)

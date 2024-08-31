@@ -111,12 +111,12 @@ class AppFrameCards(QFrame):
             if child.widget():
                 child.widget().deleteLater()
         for i, pokemon in enumerate(pokemons):
-            card = AppCardSpecies(self)
+            card = AppCardPokemon(self)
             card.set_pokemon(pokemon)
             self.layout_frame.addWidget(card, i // 5, i % 5, 1, 1)
 
         
-class AppCardSpecies(AppCard):
+class AppCardPokemon(AppCard):
     def __init__(self, parent: QWidget):
         super().__init__(parent)
         self.pokemon = None
