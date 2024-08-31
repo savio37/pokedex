@@ -75,3 +75,6 @@ class FacadeDB:
     
     def del_pokemon(self, id:int):
         self.table_pokemon.remove(self.entry.id == id)
+        
+    def update_pokemon(self, pokemon:dict):
+        self.table_pokemon.update(pokemon, self.entry.id == pokemon['id'])

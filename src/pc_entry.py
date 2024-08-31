@@ -93,6 +93,13 @@ class AppFormEntry(QFrame):
     
         self.pokemon = None
         
+        self.button_save = AppButton()
+        self.button_save.setIcon(Icon.SAVE)
+        self.button_save.setFixedSize(40, 40)
+        self.button_save.setStyleSheet(f"border-radius: 20px; background-color: {DefaultColor.BG_LIGHT};")
+        self.button_save.setClicked(self.button_save_clicked)
+        self.layout_frame.addWidget(self.button_save, 0, 0, 1, 1, Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+        
         self.button_delete = AppButton()
         self.button_delete.setIcon(Icon.DELETE)
         self.button_delete.setFixedSize(40, 40)
@@ -207,6 +214,22 @@ class AppFormEntry(QFrame):
         self.bar_spatk.setValue(pokemon['stats']['spatk'])
         self.bar_spdef.setValue(pokemon['stats']['spdef'])
         self.bar_spd.setValue(pokemon['stats']['spd'])
+        
+    def button_save_clicked(self):
+        pokemon = self.pokemon
+        if self.label_nickname.text() != "":
+            pokemon['nickname'] = self.label_nickname.text()
+        pokemon['height'] = self.label_height.value()
+        pokemon['weight'] = self.label_weight.value()
+        pokemon['level'] = self.bar_level.level
+        pokemon['xp'] = self.bar_level.value()
+        pokemon['stats']['hp'] = self.bar_hp.value()
+        pokemon['stats']['atk'] = self.bar_atk.value()
+        pokemon['stats']['def'] = self.bar_def.value()
+        pokemon['stats']['spatk'] = self.bar_spatk.value()
+        pokemon['stats']['spdef'] = self.bar_spdef.value()
+        pokemon['stats']['spd'] = self.bar_spd.value()
+        db.update_pokemon(pokemon)
         
     def button_delete_clicked(self):
         db.del_pokemon(self.pokemon['id'])
