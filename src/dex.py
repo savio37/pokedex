@@ -19,7 +19,7 @@ class AppFormDex(QFrame):
         label.setStyleSheet(f"""font-size: {DefaultFont.SIZE+8}pt; font-weight: bold;""")
         self.layout_form.addWidget(label)
         
-        self.frame_species = AppFrameSpecies(self)
+        self.frame_species = AppFrameCards(self)
         self.frame_filters = AppFrameFilters(self)
         self.layout_form.addWidget(self.frame_filters)
         self.scroll_area = QScrollArea()
@@ -79,7 +79,6 @@ class AppFrameFilters(QFrame):
         self.txt_type_2.addItem("Any")
         types = db.get_type(list(range(1, 19)))
         for t in types:
-            icon = QIcon(t['img'])
             self.txt_type_1.addItem(QIcon(t['img']), t['title'])
             self.txt_type_2.addItem(QIcon(t['img']), t['title'])
         
@@ -108,11 +107,11 @@ class AppFrameFilters(QFrame):
         
         species = db.get_species(id, name, type_1, type_2, family)
         
-        frame_species:AppFrameSpecies = self.parent().frame_species
+        frame_species:AppFrameCards = self.parent().frame_species
         frame_species.load_species(species)
 
         
-class AppFrameSpecies(QFrame):
+class AppFrameCards(QFrame):
     def __init__(self, parent: QWidget):
         super().__init__(parent)
         self.layout_frame = QGridLayout()

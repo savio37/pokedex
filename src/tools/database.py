@@ -14,6 +14,7 @@ class FacadeDB:
         self.db = TinyDB('data/database.json')
         self.table_species = self.db.table('species')
         self.table_types = self.db.table('types')
+        self.table_pokemon = self.db.table('pokemons')
         self.entry = Query()
         
     def add_species(self, species:dict):
@@ -39,9 +40,10 @@ class FacadeDB:
         
         return result
         
-    
-    def del_species(self, id:int):
-        self.table_species.remove(self.entry['id'] == id)
+    def clear_species(self):
+        self.table_species.truncate()
+        
+        
         
     def add_type(self, type:dict):
         self.table_types.insert(type)
@@ -51,13 +53,25 @@ class FacadeDB:
             return self.table_types.search(self.entry.id.one_of(id))
         else:
             return self.table_types.search(self.entry.id == id)
-    
-    def del_type(self, id:int):
-            self.table_types.remove(self.entry['id'] == id)
-        
-    def clear_species(self):
-        self.table_species.truncate()
         
     def clear_types(self):
         self.table_types.truncate()
         
+        
+        
+    def add_pokemon(self, pokemon:dict):
+        count = len(self.table_pokemon)
+        pokemon['id'] = count + 1
+        self.table_pokemon.insert(pokemon)
+        
+    def get_pokemon(self, name:str='', nickname:str='', type1:str='Any', type2:str='Any'):
+        result = self.table_pokemon.search(
+            (self.entry.name.matches(f'{name}[aZ]*', re.RegexFlag.IGNORECASE) if name != '' else self.entry.name.exists()) &
+            (self.entry.nickname.matches(f'{nickname}[aZ]*', re.RegexFlag.IGNORECASE) if nickname != '' else self.entry.name.exists()) &
+            (self.entry.types.any(lambda t: t['title'] == type1) if type1 != 'Any' else self.entry.name.exists()) &
+            (self.entry.types.any(lambda t: t['title'] == type2) if type2 != 'Any' else self.entry.name.exists()))
+        
+        return result
+    
+    def del_pokemon(self, id:int):
+        self.table_pokemon.remove(self.entry.id == id)
