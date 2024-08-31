@@ -107,11 +107,15 @@ class AppFormEntry(QFrame):
         self.button_delete.setClicked(self.button_delete_clicked)
         self.layout_frame.addWidget(self.button_delete, 0, 3, 1, 1, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
         
-        self.label_nickname = QLabel()
-        self.label_nickname.setStyleSheet(f"""font-size: {DefaultFont.SIZE+6}pt;""")
+        self.txt_nickname = QLineEdit()
+        self.txt_nickname.setStyleSheet(f"""font-size: {DefaultFont.SIZE+6}pt;""")
+        self.txt_nickname.setPlaceholderText("Nickname")
+        self.txt_nickname.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.layout_frame.addWidget(self.txt_nickname, 0, 0, 1, 2, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
         
         self.label_name = QLabel()
         self.label_name.setStyleSheet(f"""font-size: {DefaultFont.SIZE+6}pt;""")
+        self.layout_frame.addWidget(self.label_name, 0, 2, 1, 2, Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
         
         self.img_pokemon = AppImage()
         self.img_pokemon.setFixedSize(256, 256)
@@ -128,22 +132,24 @@ class AppFormEntry(QFrame):
         self.img_type_2.setFixedSize(152, 36)
         
         label = AppEntryLabel("Height")
-        self.label_height = QDoubleSpinBox()
-        self.label_height.setSuffix(" m")
-        self.label_height.setDecimals(1)
-        self.label_height.setSingleStep(0.1)
-        self.label_height.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
+        self.txt_height = QDoubleSpinBox()
+        self.txt_height.setSuffix(" m")
+        self.txt_height.setDecimals(1)
+        self.txt_height.setSingleStep(0.1)
+        self.txt_height.setRange(0.1, 50.0)
+        self.txt_height.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
         self.layout_frame.addWidget(label, 3, 2, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom)
-        self.layout_frame.addWidget(self.label_height, 4, 2, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
+        self.layout_frame.addWidget(self.txt_height, 4, 2, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
         
         label = AppEntryLabel("Weight")
-        self.label_weight = QDoubleSpinBox()
-        self.label_weight.setSuffix(" kg")
-        self.label_weight.setDecimals(1)
-        self.label_weight.setSingleStep(0.1)
-        self.label_weight.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
+        self.txt_weight = QDoubleSpinBox()
+        self.txt_weight.setSuffix(" kg")
+        self.txt_weight.setDecimals(1)
+        self.txt_weight.setSingleStep(0.1)
+        self.txt_weight.setRange(0.1, 5000.0)
+        self.txt_weight.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
         self.layout_frame.addWidget(label, 3, 3, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom)
-        self.layout_frame.addWidget(self.label_weight, 4, 3, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
+        self.layout_frame.addWidget(self.txt_weight, 4, 3, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
         
         label = AppEntryLabel("HP")
         self.bar_hp = AppStatBar()
@@ -184,14 +190,10 @@ class AppFormEntry(QFrame):
         
     def set_pokemon(self, pokemon: dict):
         self.pokemon = pokemon
+        
         if 'nickname' in pokemon:
-            self.label_nickname.setText(pokemon['nickname'])
-            self.label_name.setText(f"({pokemon['name']})")
-            self.layout_frame.addWidget(self.label_nickname, 0, 0, 1, 2, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
-            self.layout_frame.addWidget(self.label_name, 0, 2, 1, 2, Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
-        else:
-            self.label_name.setText(pokemon['name'])
-            self.layout_frame.addWidget(self.label_name, 0, 0, 1, 4, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
+            self.txt_nickname.setText(pokemon['nickname'])
+        self.label_name.setText(f"({pokemon['name']})")
         
         self.img_pokemon.setImage(pokemon['img'])
         self.img_type_1.setImage(pokemon['types'][0]['img'])
@@ -202,8 +204,8 @@ class AppFormEntry(QFrame):
         else:
             self.layout_frame.addWidget(self.img_type_1, 2, 2, 1, 2, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
             
-        self.label_height.setValue(pokemon['height'])
-        self.label_weight.setValue(pokemon['weight'])
+        self.txt_height.setValue(pokemon['height'])
+        self.txt_weight.setValue(pokemon['weight'])
         
         self.bar_level.setLevel(pokemon['level'])
         self.bar_level.setValue(pokemon['xp'])
@@ -217,10 +219,9 @@ class AppFormEntry(QFrame):
         
     def button_save_clicked(self):
         pokemon = self.pokemon
-        if self.label_nickname.text() != "":
-            pokemon['nickname'] = self.label_nickname.text()
-        pokemon['height'] = self.label_height.value()
-        pokemon['weight'] = self.label_weight.value()
+        pokemon['nickname'] = self.txt_nickname.text()
+        pokemon['height'] = self.txt_height.value()
+        pokemon['weight'] = self.txt_weight.value()
         pokemon['level'] = self.bar_level.level
         pokemon['xp'] = self.bar_level.value()
         pokemon['stats']['hp'] = self.bar_hp.value()

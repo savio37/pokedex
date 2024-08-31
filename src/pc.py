@@ -74,6 +74,13 @@ class AppFrameFilters(QFrame):
         for t in types:
             self.txt_type_1.addItem(QIcon(t['img']), t['title'])
             self.txt_type_2.addItem(QIcon(t['img']), t['title'])
+            
+        self.button_reload = AppButton()
+        self.button_reload.setIcon(Icon.RELOAD)
+        self.button_reload.setFixedSize(40, 40)
+        self.button_reload.setStyleSheet(f"border-radius: 20px; background-color: {DefaultColor.BG_LIGHT};")
+        self.button_reload.setClicked(self.filter_pokemon)
+        self.layout_frame.addWidget(self.button_reload)
         
         spacer = QSpacerItem(0, 0, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.layout_frame.addItem(spacer)
@@ -123,7 +130,7 @@ class AppCardPokemon(AppCard):
         self.popup = AppWindowEntry()
         
         self.label_especie = QLabel()
-        self.layout_frame.addWidget(self.label_especie, 0, 0, 1, 2, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
+        self.layout_frame.addWidget(self.label_especie, 0, 0, 1, 2, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
         
         self.img_especie = AppImage()
         self.img_especie.setFixedSize(160, 160)
@@ -142,7 +149,7 @@ class AppCardPokemon(AppCard):
     def set_pokemon(self, pokemon: dict):
         self.pokemon = pokemon
         self.label_especie.setText(pokemon['name'])
-        if 'nickname' in pokemon:
+        if 'nickname' in pokemon and pokemon['nickname'] != '':
             self.label_especie.setText(f"{pokemon['nickname']} ({pokemon['name']})")
         self.img_especie.setImage(pokemon['img'])
         

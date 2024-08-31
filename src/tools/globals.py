@@ -9,11 +9,10 @@ class Icon:
     #control
     ARROW_DOWN = __path + "control/arrow_down.png"
     ARROW_UP = __path + "control/arrow_up.png"
-    CHECKED = __path + "control/checked.png"
     DELETE = __path + "control/delete.png"
     SAVE = __path + "control/save.png"
     EDIT = __path + "control/edit.png"
-    SELECT = __path + "control/select.png"
+    RELOAD = __path + "control/reload.png"
     
     #menu
     PC = __path + "menu/pc.png"
