@@ -121,13 +121,19 @@ class AppFormEntry(QFrame):
         self.img_type_2.setFixedSize(152, 36)
         
         label = AppEntryLabel("Height")
-        self.label_height = QLabel()
+        self.label_height = QDoubleSpinBox()
+        self.label_height.setSuffix(" m")
+        self.label_height.setDecimals(1)
+        self.label_height.setSingleStep(0.1)
         self.label_height.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
         self.layout_frame.addWidget(label, 3, 2, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom)
         self.layout_frame.addWidget(self.label_height, 4, 2, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
         
         label = AppEntryLabel("Weight")
-        self.label_weight = QLabel()
+        self.label_weight = QDoubleSpinBox()
+        self.label_weight.setSuffix(" kg")
+        self.label_weight.setDecimals(1)
+        self.label_weight.setSingleStep(0.1)
         self.label_weight.setStyleSheet(f"""font-size: {DefaultFont.SIZE+4}pt; font-weight: normal;""")
         self.layout_frame.addWidget(label, 3, 3, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom)
         self.layout_frame.addWidget(self.label_weight, 4, 3, 1, 1, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
@@ -189,8 +195,8 @@ class AppFormEntry(QFrame):
         else:
             self.layout_frame.addWidget(self.img_type_1, 2, 2, 1, 2, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
             
-        self.label_height.setText(f"{pokemon['height']} m")
-        self.label_weight.setText(f"{pokemon['weight']} kg")
+        self.label_height.setValue(pokemon['height'])
+        self.label_weight.setValue(pokemon['weight'])
         
         self.bar_level.setLevel(pokemon['level'])
         self.bar_level.setValue(pokemon['xp'])

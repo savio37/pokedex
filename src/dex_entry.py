@@ -211,6 +211,7 @@ class AppFormEntry(QFrame):
             new_pokemon['level'] = 1
             new_pokemon['xp'] = 0
             db.add_pokemon(new_pokemon)
+            self.window().close()
 
 class AppDexLabel(QLabel):
     def __init__(self, text:str | None = None):
