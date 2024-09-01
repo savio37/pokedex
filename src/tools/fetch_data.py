@@ -123,6 +123,26 @@ async def get_types():
 # print("<<< ESPÉCIES >>>") 
 # asyncio.run(get_species(range(1, 152)))
 
-#add example pokemon
-db = FacadeDB()
-db.add_pokemon({'name': 'Bulbasaur', 'nickname': 'Bulby', 'types': [{'id': 12, 'title': 'Grass', 'img': 'assets/images/type/12.png'}, {'id': 4, 'title': 'Poison', 'img': 'assets/images/type/4.png'}], 'img': 'assets/images/pokemon/1.png', 'height': 0.7, 'weight': 6.9, 'stats': {'hp': 45, 'atk': 49, 'def': 49, 'spatk': 65, 'spdef': 65, 'spd': 45}, 'level': 1, 'xp': 100})
+pokemon = {
+    'id': 999,
+    'name': 'Bulbasaur',
+    'nickname': 'Bulby',
+    'img': 'assets/images/pokemon/1.png',
+    'types': [
+        {'id': 12, 'title': 'Grass', 'img': 'assets/images/type/12.png'},
+        {'id': 4, 'title': 'Poison', 'img': 'assets/images/type/4.png'}
+    ],
+    'height': 0.7,
+    'weight': 6.9,
+    'stats': {
+        'hp': 45,
+        'atk': 49,
+        'def': 49,
+        'spatk': 65,
+        'spdef': 65,
+        'spd': 45
+    },
+    'level': 1,
+    'xp': 25
+}
+
